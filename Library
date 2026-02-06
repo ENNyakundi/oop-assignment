@@ -1,0 +1,31 @@
+#include <vector>
+#include <algorithm>
+
+class Library {
+private:
+    std::vector<Book> books;
+
+public:
+    void addBook(const Book& b) {
+        books.push_back(b);
+    }
+
+    void searchByTitle(std::string query) {
+        bool found = false;
+        for (const auto& book : books) {
+            if (book.getTitle() == query) {
+                book.display();
+                found = true;
+            }
+        }
+        if (!found) std::cout << "Book not found." << std::endl;
+    }
+
+    // This pointer/reference allows the User to actually "take" the book
+    Book* findBookPtr(std::string isbn) {
+        for (auto& book : books) {
+            if (book.getISBN() == isbn) return &book;
+        }
+        return nullptr;
+    }
+};
