@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+class Book {
+private:
+    std::string title;
+    std::string author;
+    std::string isbn;
+    bool isAvailable;
+
+public:
+    Book(std::string t, std::string a, std::string i) 
+        : title(t), author(a), isbn(i), isAvailable(true) {}
+
+    // Getters
+    std::string getTitle() const { return title; }
+    bool checkAvailability() const { return isAvailable; }
+
+    void setAvailability(bool status) { isAvailable = status; }
+
+    void display() const {
+        std::cout << "[" << isbn << "] " << title << " by " << author 
+                  << (isAvailable ? " (Available)" : " (Checked Out)") << std::endl;
+    }
+};
